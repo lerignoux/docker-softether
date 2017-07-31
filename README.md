@@ -240,3 +240,22 @@ you can then start your container with the following command to use the local co
 docker run -d -v ~/vpn_server.config:/usr/local/vpnserver/vpn_server.config --net host --cap-add NET_ADMIN --name softether frosquin/softether
 ```
 this way you don't loose your configuration if the instance or docker are restarted or if you wish to switch instance, cloud platform ...
+
+## Shadowsocks
+
+If you wish to add shadowsocks capabilities see the (docker container](https://hub.docker.com/r/mritd/shadowsocks/)
+basicaly:
+```
+docker run -dt --name ss -p 6443:6443 -p 6500:6500/udp mritd/shadowsocks -s "-s :: -s 0.0.0.0 -p 6443 -m aes-256-cfb -k shadowSocksPassword --fast-open" -k "-t 127.0.0.1:6443 -l :6500 -mode fast2" -x
+```
+
+client configuration can be found [there ](https://www.linuxbabe.com/desktop-linux/how-to-install-and-use-shadowsocks-command-line-client)
+```
+pip install shadowsocks
+update the shadowsocks template provided
+```
+
+update /etc/rc.local with the json configuration file (update the path).
+```
+sudo sslocal -c ~/shadowsocks.json -d start
+```
