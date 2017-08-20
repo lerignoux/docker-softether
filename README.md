@@ -73,7 +73,7 @@ docker pull frosquin/softether
 
 ### Start the container:
 ```sh
-docker run -d --net host --cap-add NET_ADMIN --name softether frosquin/softether
+docker run -d --restart always --net host --cap-add NET_ADMIN --name softether frosquin/softether
 ```
 
 ### Configure the server:
@@ -237,7 +237,7 @@ docker cp softether:/usr/local/vpnserver/vpn_server.config ~/
 
 you can then start your container with the following command to use the local configuration
 ```sh
-docker run -d -v ~/vpn_server.config:/usr/local/vpnserver/vpn_server.config --net host --cap-add NET_ADMIN --name softether frosquin/softether
+docker run -d --restart always -v ~/vpn_server.config:/usr/local/vpnserver/vpn_server.config --net host --cap-add NET_ADMIN --name softether frosquin/softether
 ```
 this way you don't loose your configuration if the instance or docker are restarted or if you wish to switch instance, cloud platform ...
 
