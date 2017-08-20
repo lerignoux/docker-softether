@@ -244,18 +244,14 @@ this way you don't loose your configuration if the instance or docker are restar
 ## Shadowsocks
 
 If you wish to add shadowsocks capabilities see the (docker container](https://hub.docker.com/r/mritd/shadowsocks/)
-basicaly:
+basicaly to setup a simple shadowsocks you need to run : (Adapt priv to your liking)
+### Server side
 ```
-docker run -dt --name ss -p 6443:6443 -p 6500:6500/udp mritd/shadowsocks -s "-s :: -s 0.0.0.0 -p 6443 -m aes-256-cfb -k shadowSocksPassword --fast-open" -k "-t 127.0.0.1:6443 -l :6500 -mode fast2" -x
-```
-
-client configuration can be found [there ](https://www.linuxbabe.com/desktop-linux/how-to-install-and-use-shadowsocks-command-line-client)
-```
-pip install shadowsocks
-update the shadowsocks template provided
+docker run -d --restart always --name shadowsocks -p 6443:6443 tommylau/shadowsocks  -s 0.0.0.0 -p 6443 -m aes-256-cfb -k test123
 ```
 
-update /etc/rc.local with the json configuration file (update the path).
+### Client side
 ```
-sudo sslocal -c ~/shadowsocks.json -d start
+sslocal -c ~/Projects/docker-softether/config/shadowsocks.json
 ```
+
