@@ -175,6 +175,24 @@ fill the following configuration:
 ![Configuration](data/SSTPConfiguration.png)
 
 
+## Linux l2TP/IPSec configuration:
+install the required packages:
+```
+sudo apt-get install network-manager-l2tp network-manager-l2tp-gnome
+```
+
+
+I suggest the following configuration:
+
+![Configuration](data/IPSecConfiguration.png)
+
+If you want to use a different algorithms configuration you can query the server capabilities using the script ike-scan.sh. (taken from [the network manager troubleshooting page](https://github.com/nm-l2tp/network-manager-l2tp/wiki/Known-Issues))
+
+```
+sudo apt-get install ike-scan
+sudo ./ike-scan.sh <YourServerIpAddress> | grep SA
+```
+
 ## Windows SSTP/IPSec configuration:
 Go in Network and sharing center
 Add a new connection
@@ -254,4 +272,3 @@ docker run -d --restart always --name shadowsocks -p 6443:6443 tommylau/shadowso
 ```
 sslocal -c ~/Projects/docker-softether/config/shadowsocks.json
 ```
-
