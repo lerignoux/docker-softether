@@ -262,13 +262,4 @@ this way you don't loose your configuration if the instance or docker are restar
 ## Shadowsocks
 
 If you wish to add shadowsocks capabilities see the (docker container](https://hub.docker.com/r/mritd/shadowsocks/)
-basicaly to setup a simple shadowsocks you need to run : (Adapt priv to your liking)
-### Server side
-```
-docker run -d --restart always --name shadowsocks -p 6443:6443 tommylau/shadowsocks  -s 0.0.0.0 -p 6443 -m aes-256-cfb -k test123
-```
-
-### Client side
-```
-sslocal -c ~/Projects/docker-softether/config/shadowsocks.json
-```
+following the setup in [docker-shadowsocks README](https://github.com/lerignoux/docker-shadowsocks)
